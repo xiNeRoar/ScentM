@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#FDFBF9">
-    <title>木質調的靈魂 · Journal · Scent.M</title>
+    <title>客戶見證 Testimonials · Scent.M</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,6 +433,239 @@
                 align-items: center;
             }
         }
+    
+        .caption-meta {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: rgba(59,38,29,0.55);
+            line-height: 1.6;
+        }
+        @media (min-width: 768px) { .caption-meta { font-size: 11px; } }
+
+        /* ============ Testimonials peek carousel ============ */
+        .t-track {
+            display: flex;
+            gap: clamp(20px, 2.6vw, 36px);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 28px;
+            padding-right: clamp(48px, 12vw, 18vw);
+        }
+        .t-track::-webkit-scrollbar { display: none; }
+
+        /* Dual-state card: text default → image background on focus */
+        .t-card {
+            position: relative;
+            flex: 0 0 auto;
+            width: clamp(320px, 38vw, 520px);
+            aspect-ratio: 4/5.6;
+            scroll-snap-align: start;
+            border-radius: 2px;
+            overflow: hidden;
+            background: #FDFBF9;
+            border: 1px solid rgba(59,38,29,0.12);
+            transition: opacity 0.55s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1);
+            cursor: pointer;
+        }
+        .t-card:not(.is-focused):not(:hover) { opacity: 0.55; }
+        .t-card.is-focused, .t-card:hover { opacity: 1; }
+
+        /* Background image — hidden by default, fades in on focus */
+        /* Staggered vertical offset — alternating card heights with more variation */
+        .t-card:nth-child(1) { transform: translateY(0); }
+        .t-card:nth-child(2) { transform: translateY(60px); }
+        .t-card:nth-child(3) { transform: translateY(20px); }
+        .t-card:nth-child(4) { transform: translateY(90px); }
+        .t-card:nth-child(5) { transform: translateY(40px); }
+        @media (min-width: 768px) {
+            .t-card:nth-child(1) { transform: translateY(0); }
+            .t-card:nth-child(2) { transform: translateY(110px); }
+            .t-card:nth-child(3) { transform: translateY(36px); }
+            .t-card:nth-child(4) { transform: translateY(150px); }
+            .t-card:nth-child(5) { transform: translateY(72px); }
+        }
+        .t-track { padding-top: 12px; padding-bottom: 200px; }
+        .t-card .t-img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: contrast(1.02) sepia(0.18) brightness(0.85) saturate(0.95);
+            opacity: 0;
+            transform: scale(1.06);
+            transition: opacity 0.7s ease, transform 1.4s cubic-bezier(0.22,1,0.36,1);
+            z-index: 0;
+        }
+        .t-card.is-focused .t-img, .t-card:hover .t-img { opacity: 1; transform: scale(1.0); }
+
+        /* Dark vignette over image — only when focused */
+        .t-card .t-veil {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(59,38,29,0.18) 0%, rgba(59,38,29,0) 28%, rgba(59,38,29,0.25) 55%, rgba(59,38,29,0.82) 95%),
+                radial-gradient(110% 60% at 50% 110%, rgba(166,75,42,0.22) 0%, rgba(59,38,29,0) 60%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        .t-card.is-focused .t-veil, .t-card:hover .t-veil { opacity: 1; }
+
+        /* Grain — only on focused (image) state */
+        .t-card .t-grain {
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' /%3E%3CfeColorMatrix values='0 0 0 0 0.231 0 0 0 0 0.149 0 0 0 0 0.114 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+            opacity: 0;
+            mix-blend-mode: overlay;
+            z-index: 2;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+        }
+        .t-card.is-focused .t-grain, .t-card:hover .t-grain { opacity: 0.16; }
+
+        /* All in-card content lives on z-3, colors flip via class */
+        .t-tag, .t-num, .t-glyph, .t-body { transition: color 0.5s ease; }
+
+        .t-tag {
+            position: absolute;
+            top: 24px; left: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 3;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: #A64B2A;
+        }
+        .t-tag::before {
+            content: '';
+            display: inline-block;
+            width: 18px; height: 1px;
+            background: #A64B2A;
+            transition: background 0.5s ease;
+        }
+        .t-card.is-focused .t-tag, .t-card:hover .t-tag { color: rgba(243,234,225,0.85); }
+        .t-card.is-focused .t-tag::before, .t-card:hover .t-tag::before { background: rgba(243,234,225,0.55); }
+
+        .t-num {
+            position: absolute;
+            top: 24px; right: 24px;
+            z-index: 3;
+            font-family: 'Baskervville', serif;
+            font-style: italic;
+            font-size: 13px;
+            color: rgba(59,38,29,0.4);
+        }
+        .t-card.is-focused .t-num, .t-card:hover .t-num { color: rgba(243,234,225,0.65); }
+
+        .t-glyph {
+            position: absolute;
+            top: 24%; left: 24px;
+            z-index: 2;
+            font-family: 'Baskervville', serif;
+            font-style: italic;
+            font-size: 120px;
+            line-height: 0.5;
+            color: rgba(166,75,42,0.32);
+            user-select: none;
+            pointer-events: none;
+        }
+        .t-card.is-focused .t-glyph, .t-card:hover .t-glyph { color: rgba(166,75,42,0.55); }
+
+        .t-body {
+            position: absolute;
+            inset: auto 24px 24px 24px;
+            z-index: 3;
+            color: #3B261D;
+        }
+        .t-card.is-focused .t-body, .t-card:hover .t-body { color: #F3EAE1; }
+        .t-quote {
+            font-family: 'Baskervville', "Cactus Classical Serif", serif;
+            font-style: italic;
+            font-size: clamp(14px, 1.25vw, 18px);
+            line-height: 1.55;
+            margin-bottom: 22px;
+            text-wrap: balance;
+            color: inherit;
+        }
+        .t-rule {
+            display: block; height: 1px;
+            background: rgba(59,38,29,0.18);
+            margin-bottom: 14px;
+            transition: background 0.5s ease;
+        }
+        .t-card.is-focused .t-rule, .t-card:hover .t-rule { background: rgba(243,234,225,0.28); }
+        .t-name {
+            font-family: 'Baskervville', serif;
+            font-size: clamp(13px, 1vw, 16px);
+            margin-bottom: 3px;
+            color: inherit;
+        }
+        .t-role {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            line-height: 1.5;
+            color: rgba(59,38,29,0.55);
+            transition: color 0.5s ease;
+        }
+        .t-card.is-focused .t-role, .t-card:hover .t-role { color: rgba(243,234,225,0.6); }
+
+        /* Minimal numeric nav matching homepage CTA pattern */
+        .t-nav {
+            display: flex;
+            align-items: baseline;
+            gap: 28px;
+            font-family: 'Baskervville', serif;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1;
+            color: rgba(59,38,29,0.7);
+        }
+        .t-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            font: inherit;
+            font-style: normal;
+            color: #3B261D;
+            letter-spacing: 0.04em;
+            transition: color 0.4s ease;
+            position: relative;
+        }
+        .t-nav-link svg { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .t-nav-link:hover { color: #A64B2A; }
+        .t-nav-link.t-next:hover svg { transform: translateX(4px); }
+        .t-nav-link.t-prev:hover svg { transform: translateX(-4px); }
+        .t-nav-link[aria-disabled="true"] { opacity: 0.3; pointer-events: none; }
+        .t-nav-divider {
+            display: inline-block;
+            height: 1px;
+            width: 24px;
+            background: rgba(59,38,29,0.25);
+            margin: 0 2px;
+            transform: translateY(-5px);
+        }
+        .t-counter {
+            font-family: 'Baskervville', serif;
+            font-style: italic;
+            color: rgba(59,38,29,0.5);
+            font-size: 15px;
+            letter-spacing: 0.02em;
+            margin-top: 18px;
+        }
+        .t-counter b { color: #A64B2A; font-weight: 400; }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
@@ -499,166 +732,161 @@
         </div>
     </div>
 
-    <!-- Journal Detail · Editorial article cover -->
-    <header class="relative pt-28 md:pt-36 pb-16 md:pb-24 px-6 md:px-12">
-        <div class="max-w-3xl mx-auto">
-            <nav aria-label="Breadcrumb" class="mb-10 md:mb-16 font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase opacity-55 hero-fade-up opacity-0 translate-y-4">
-                <a href="journal.html" class="hover:text-brand-terracotta transition-colors duration-300">← 返回品牌日誌</a>
-            </nav>
+    <!-- Carousel -->
+    <section class="px-6 md:px-12 pb-24 md:pb-32 pt-28 md:pt-44 ani-this bottom-in">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-start">
 
-            <span class="block font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase text-brand-terracotta mb-6 md:mb-8 hero-fade-up opacity-0 translate-y-4">Scent Story · Oct 24, 2026</span>
-
-            <h1 class="fluid-display font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight text-brand-brown text-balance hero-text opacity-0 translate-y-8">
-                木質調的靈魂：<br>雪松與檀香的對話
-            </h1>
-
-            <p class="font-serif italic text-xl md:text-2xl text-brand-brown/65 mt-8 md:mt-10 hero-fade-up opacity-0 translate-y-4">
-                深入探索 Scent.M 最受歡迎的木質香調背後，調香師如何從雨後森林汲取靈感。
-            </p>
-        </div>
-    </header>
-
-    <!-- Journal Detail · Cover image -->
-    <section class="px-6 md:px-12 mb-16 md:mb-24">
-        <div class="max-w-screen-2xl mx-auto">
-            <div class="w-full aspect-[16/9] md:aspect-[3/1] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] ani-this bottom-in">
-                <img src="journal-1.jpg" class="w-full h-full object-cover" alt="Woody scent" loading="eager">
-            </div>
-        </div>
-    </section>
-
-    <!-- Journal Detail · ACF Flexible Content body -->
-    <article class="px-6 md:px-12 pb-20 md:pb-32">
-        <div class="max-w-[680px] mx-auto">
-
-            <!-- ACF block: rich_text (with drop cap option on first paragraph) -->
-            <div class="font-serif text-lg md:text-xl leading-[2] md:leading-[2.1] text-brand-brown/85 space-y-7 md:space-y-9 ani-this bottom-in">
-                <p class="essay-dropcap">
-                    雪松同檀香，係調香嘅基石。佢哋唔搶風頭，但無咗佢哋，整支香水就會失去重量。如果話頂調係前奏、中調係副歌，咁木質尾調就係令一支香水「站得住」嘅低音。
+            <div class="md:col-span-4 md:col-start-1 md:sticky md:top-28 md:mt-32 lg:mt-48">
+                <span class="block font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase text-brand-terracotta mb-6 md:mb-8">Testimonials</span>
+                <h2 class="font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.02] tracking-tight text-brand-brown mb-8 md:mb-12 text-balance">
+                    客戶真實見證
+                </h2>
+                <p class="font-sans text-base md:text-lg leading-[1.9] text-brand-brown/75 mb-12 md:mb-16 max-w-sm">
+                    來自合作品牌、空間經營者、工作坊參加者與媒體 — 我哋將佢哋嘅聲音編輯成集，作為我哋每一支配方背後嘅見證。每一段話都來自實際合作過嘅夥伴，記錄住氣味如何進入佢哋嘅日常，並成為品牌記憶嘅一部分。
                 </p>
-                <p>
-                    喺 Scent.M 嘅工作室，我哋對木質嘅執著有兩個源頭：第一，係 founder Ruby 喺京都拜訪一位百年香舖嘅經驗 — 嗰種沉穩、緩慢嘅氣息，幾年後仍然喺記憶裡面浮現。第二，係我哋對「香港氣味」嘅一個觀察 — 城市急促，但只要踏入一個香舖、一間 sake bar，木質氣息會即時將節奏拉慢。
-                </p>
-            </div>
 
-            <!-- ACF block: section_heading -->
-            <h2 class="font-serif text-2xl md:text-3xl text-brand-brown mt-14 md:mt-20 mb-5 md:mb-7 leading-[1.3] ani-this bottom-in">雪松：銳利的清醒</h2>
-
-            <!-- ACF block: rich_text -->
-            <div class="font-serif text-lg md:text-xl leading-[2] md:leading-[2.1] text-brand-brown/85 space-y-7 md:space-y-9 ani-this bottom-in">
-                <p>
-                    Virginia 雪松給人嘅印象通常係「鉛筆刨末嘅味」 — 乾爽、明朗、帶少少煙燻。我哋採購嘅雪松來自美國東部，喺低溫蒸餾下提取嘅原精顏色金黃，氣味比 atlas 雪松更輕、更尖。我哋通常會用佢做頂中調之間嘅橋樑 — 比柑橘穩、比花調乾。
-                </p>
-            </div>
-
-            <!-- ACF block: single_image -->
-            <figure class="mt-12 md:mt-16 ani-this bottom-in">
-                <div class="w-full aspect-[16/10] rounded-sm overflow-hidden film-filter bg-[#E5D5C5]">
-                    <img src="journal-2.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                <div class="t-nav">
+                    <button class="t-nav-link t-prev" id="t-prev" aria-label="Previous">
+                        <svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+                            <path d="M30 7H2M2 7l6-6M2 7l6 6"/>
+                        </svg>
+                    </button>
+                    <span class="t-nav-divider"></span>
+                    <button class="t-nav-link t-next" id="t-next" aria-label="Next">
+                        <svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+                            <path d="M2 7h28M30 7l-6-6M30 7l-6 6"/>
+                        </svg>
+                    </button>
                 </div>
-            </figure>
 
-            <!-- ACF block: section_heading -->
-            <h2 class="font-serif text-2xl md:text-3xl text-brand-brown mt-14 md:mt-20 mb-5 md:mb-7 leading-[1.3] ani-this bottom-in">檀香：溫柔的存在</h2>
-
-            <!-- ACF block: rich_text -->
-            <div class="font-serif text-lg md:text-xl leading-[2] md:leading-[2.1] text-brand-brown/85 space-y-7 md:space-y-9 ani-this bottom-in">
-                <p>
-                    印度 Mysore 檀香因為過度採伐，已經幾乎絕跡。我哋而家使用嘅澳洲檀香，雖然氣味比 Mysore 輕一個檔次，但勝在可持續、亦更乾淨。佢嘅 character 係 milky、smooth，帶少少奶香 — 同雪松嘅銳利剛好相反。
-                </p>
+                <p class="t-counter"><b id="t-current">01</b> &nbsp;/&nbsp; 05</p>
             </div>
 
-            <!-- ACF block: pull_quote -->
-            <blockquote class="my-14 md:my-20 ani-this bottom-in text-center">
-                <p class="font-serif italic text-2xl md:text-3xl lg:text-[2.4rem] leading-[1.6] md:leading-[1.55] text-brand-terracotta text-balance">
-                    "好嘅木質調，係令你心跳慢三拍嘅氣味。"
-                </p>
-            </blockquote>
+            <div class="md:col-span-8 md:col-start-5" style="margin-right: calc(50% - 50vw);">
+                <div class="t-track" id="t-track">
 
-            <!-- ACF block: photo_album (3-column) -->
-            <div class="grid grid-cols-3 gap-3 md:gap-4 my-12 md:my-16 ani-this bottom-in">
-                <div class="aspect-square rounded-sm overflow-hidden film-filter bg-[#E5D5C5]"><img src="journal-1.jpg" class="w-full h-full object-cover" alt="" loading="lazy"></div>
-                <div class="aspect-square rounded-sm overflow-hidden film-filter bg-[#E5D5C5]"><img src="journal-3.jpg" class="w-full h-full object-cover" alt="" loading="lazy"></div>
-                <div class="aspect-square rounded-sm overflow-hidden film-filter bg-[#E5D5C5]"><img src="odm-perfume.jpg" class="w-full h-full object-cover" alt="" loading="lazy"></div>
-            </div>
-
-            <!-- ACF block: rich_text -->
-            <div class="font-serif text-lg md:text-xl leading-[2] md:leading-[2.1] text-brand-brown/85 space-y-7 md:space-y-9 ani-this bottom-in">
-                <p>
-                    喺我哋最新一支客戶配方裡面，雪松同檀香嘅比例係 3:7 — 雪松負責一開始嘅 lift，檀香慢慢接手，喺皮膚上停留 6-8 小時。配合少少橙花原精同零陵香豆，整體變得圓潤、有故事性。
-                </p>
-            </div>
-
-            <!-- ACF block: video_embed -->
-            <figure class="my-12 md:my-16 ani-this bottom-in">
-                <div class="w-full aspect-video rounded-sm overflow-hidden bg-brand-brown/85 relative group cursor-pointer">
-                    <img src="marketing.jpg" class="w-full h-full object-cover opacity-50" alt="" loading="lazy">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="w-16 h-16 md:w-20 md:h-20 rounded-full border border-brand-beige/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-6 h-6 md:w-8 md:h-8 fill-brand-beige translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </span>
-                    </div>
+                    <article class="t-card is-focused" data-idx="0">
+                        <img class="t-img" src="marketing.jpg" alt="" loading="eager"><span class="t-veil"></span><span class="t-grain"></span>
+                        <span class="t-tag">Hospitality</span>
+                        <span class="t-num">01</span>
+                        <span class="t-glyph">"</span>
+                        <div class="t-body">
+                            <p class="t-quote">我哋酒店大堂用咗 Scent.M 為我哋打造嘅木質香。三個月後，仍然有客人退房前主動問我哋呢個係咩牌子。氣味成為咗品牌嘅一部分。</p>
+                            <span class="t-rule"></span>
+                            <p class="t-name">Ms. Chan</p>
+                            <p class="t-role">General Manager · Boutique Hotel · 香港</p>
+                        </div>
+                    </article>
+                    <article class="t-card" data-idx="1">
+                        <img class="t-img" src="odm-perfume.jpg" alt="" loading="eager"><span class="t-veil"></span><span class="t-grain"></span>
+                        <span class="t-tag">Boutique ODM</span>
+                        <span class="t-num">02</span>
+                        <span class="t-glyph">"</span>
+                        <div class="t-body">
+                            <p class="t-quote">由概念對話到香材揀選，再到反覆校準同最終灌裝，每一步都見到匠人精神。我哋成支香水嘅故事，由佢哋幫我哋編出嚟。</p>
+                            <span class="t-rule"></span>
+                            <p class="t-name">Mr. Wong</p>
+                            <p class="t-role">Founder · Independent Fragrance Brand</p>
+                        </div>
+                    </article>
+                    <article class="t-card" data-idx="2">
+                        <img class="t-img" src="journal-2.jpg" alt="" loading="lazy"><span class="t-veil"></span><span class="t-grain"></span>
+                        <span class="t-tag">Workshop</span>
+                        <span class="t-num">03</span>
+                        <span class="t-glyph">"</span>
+                        <div class="t-body">
+                            <p class="t-quote">個人香水調配工作坊比我想像中更療癒。整個下午由調香師耐心引導，最後帶走嗰支 30ml 真係屬於自己嘅作品。</p>
+                            <span class="t-rule"></span>
+                            <p class="t-name">Karen L.</p>
+                            <p class="t-role">Workshop Participant · 2024</p>
+                        </div>
+                    </article>
+                    <article class="t-card" data-idx="3">
+                        <img class="t-img" src="journal-1.jpg" alt="" loading="lazy"><span class="t-veil"></span><span class="t-grain"></span>
+                        <span class="t-tag">Olfactive Installation</span>
+                        <span class="t-num">04</span>
+                        <span class="t-glyph">"</span>
+                        <div class="t-body">
+                            <p class="t-quote">為我哋藝廊嘅聯乘展覽量身設計嘅氣味裝置，令觀眾喺視覺以外多咗一個層次去感受作品。展覽完結後仍有人私訊問起。</p>
+                            <span class="t-rule"></span>
+                            <p class="t-name">Ms. Lam</p>
+                            <p class="t-role">Curator · Independent Gallery</p>
+                        </div>
+                    </article>
+                    <article class="t-card" data-idx="4">
+                        <img class="t-img" src="hero.jpg" alt="" loading="lazy"><span class="t-veil"></span><span class="t-grain"></span>
+                        <span class="t-tag">Café</span>
+                        <span class="t-num">05</span>
+                        <span class="t-glyph">"</span>
+                        <div class="t-body">
+                            <p class="t-quote">咖啡店 signature scent 用咗一年多。常客一行入嚟就嗅到我哋。香氣，原來係品牌最被低估嘅資產。</p>
+                            <span class="t-rule"></span>
+                            <p class="t-name">Mr. Cheung</p>
+                            <p class="t-role">Owner · Specialty Café · 中環</p>
+                        </div>
+                    </article>
                 </div>
-            </figure>
-
-            <!-- ACF block: rich_text -->
-            <div class="font-serif text-lg md:text-xl leading-[2] md:leading-[2.1] text-brand-brown/85 space-y-7 md:space-y-9 ani-this bottom-in">
-                <p>
-                    呢支配方而家係其中一位本地書店主理人嘅 signature scent — 佢用嚟噴佢嘅紙袋。客人帶住袋走，三日後仍然嗅到。
-                </p>
             </div>
 
         </div>
-    </article>
-
-    <!-- Journal Detail · Author sign-off -->
-    <section class="px-6 md:px-12 pb-24 md:pb-32">
-        <div class="max-w-[680px] mx-auto pt-10 md:pt-14 border-t border-brand-brown/15">
-            <span class="block font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase opacity-55 mb-3 md:mb-4 ani-this bottom-in">Written by</span>
-            <p class="font-serif italic text-xl md:text-2xl text-brand-brown ani-this bottom-in delay-1">Ruby Wong, Founder</p>
-        </div>
     </section>
 
-    <!-- Journal Detail · Related articles -->
-    <section class="px-6 md:px-12 py-20 md:py-32 border-t border-brand-brown/15">
-        <div class="max-w-screen-2xl mx-auto">
-            <span class="block font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase text-brand-terracotta mb-10 md:mb-14 ani-this bottom-in">Continue Reading</span>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+    <script>
+        (function() {
+            const track = document.getElementById('t-track');
+            if (!track) return;
+            const cards = [...track.querySelectorAll('.t-card')];
+            const prev = document.getElementById('t-prev');
+            const next = document.getElementById('t-next');
+            const counter = document.getElementById('t-current');
+            let activeIdx = 0;
 
-                <a href="journal-detail.html" class="group ani-this bottom-in h-full flex flex-col">
-                    <div class="w-full aspect-[4/5] mb-5 md:mb-6 film-filter rounded-sm relative overflow-hidden bg-[#E5D5C5]">
-                        <img src="journal-2.jpg" class="hover-scale-img w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out" alt="Art collab" loading="lazy">
-                    </div>
-                    <div class="flex flex-col gap-2 md:gap-3 flex-1">
-                        <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase opacity-55">Case Study · Sep 12, 2026</span>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-brown group-hover:text-brand-terracotta transition-colors duration-500 leading-tight">香港藝術月：氣味聯乘展覽回顧</h3>
-                    </div>
-                </a>
+            const setActive = (idx) => {
+                activeIdx = Math.max(0, Math.min(cards.length - 1, idx));
+                cards.forEach((c, i) => c.classList.toggle('is-focused', i === activeIdx));
+                if (counter) counter.textContent = String(activeIdx + 1).padStart(2, '0');
+                if (prev) prev.setAttribute('aria-disabled', activeIdx === 0 ? 'true' : 'false');
+                if (next) next.setAttribute('aria-disabled', activeIdx === cards.length - 1 ? 'true' : 'false');
+                const progress = document.getElementById('t-progress');
+                if (progress) progress.style.transform = 'scaleX(' + ((activeIdx + 1) / cards.length) + ')';
+            };
 
-                <a href="journal-detail.html" class="group ani-this bottom-in delay-1 h-full flex flex-col">
-                    <div class="w-full aspect-[4/5] mb-5 md:mb-6 film-filter rounded-sm relative overflow-hidden bg-[#E5D5C5]">
-                        <img src="hero.jpg" class="hover-scale-img w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out" alt="Citrus" loading="lazy">
-                    </div>
-                    <div class="flex flex-col gap-2 md:gap-3 flex-1">
-                        <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase opacity-55">Scent Story · Jun 02, 2026</span>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-brown group-hover:text-brand-terracotta transition-colors duration-500 leading-tight">柑橘調的早晨：苦橙葉的甦醒</h3>
-                    </div>
-                </a>
+            const scrollToIdx = (idx) => {
+                idx = Math.max(0, Math.min(cards.length - 1, idx));
+                const card = cards[idx];
+                if (!card) return;
+                // Temporarily relax snap during programmatic scroll to prevent fighting
+                track.style.scrollSnapType = 'none';
+                const target = card.offsetLeft - track.offsetLeft;
+                track.scrollTo({ left: target, behavior: 'smooth' });
+                setActive(idx);
+                // Restore snap after the smooth scroll settles
+                setTimeout(() => { track.style.scrollSnapType = ''; }, 700);
+            };
 
-                <a href="journal-detail.html" class="group ani-this bottom-in delay-2 h-full flex flex-col">
-                    <div class="w-full aspect-[4/5] mb-5 md:mb-6 film-filter rounded-sm relative overflow-hidden bg-[#E5D5C5]">
-                        <img src="odm-perfume.jpg" class="hover-scale-img w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out" alt="Bottle" loading="lazy">
-                    </div>
-                    <div class="flex flex-col gap-2 md:gap-3 flex-1">
-                        <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase opacity-55">Scent Story · May 14, 2026</span>
-                        <h3 class="font-serif text-2xl md:text-3xl text-brand-brown group-hover:text-brand-terracotta transition-colors duration-500 leading-tight">關於玻璃的份量：為一支香水選瓶</h3>
-                    </div>
-                </a>
+            let raf = null;
+            track.addEventListener('scroll', () => {
+                if (raf) return;
+                raf = requestAnimationFrame(() => {
+                    raf = null;
+                    const trackLeft = track.getBoundingClientRect().left;
+                    let bestIdx = 0, bestDist = Infinity;
+                    cards.forEach((c, i) => {
+                        const cardLeft = c.getBoundingClientRect().left;
+                        const d = Math.abs(cardLeft - trackLeft);
+                        if (d < bestDist) { bestDist = d; bestIdx = i; }
+                    });
+                    if (bestIdx !== activeIdx) setActive(bestIdx);
+                });
+            }, { passive: true });
 
-            </div>
-        </div>
-    </section>
+            cards.forEach((c, i) => c.addEventListener('click', () => scrollToIdx(i)));
+            prev.addEventListener('click', () => scrollToIdx(activeIdx - 1));
+            next.addEventListener('click', () => scrollToIdx(activeIdx + 1));
 
+            setActive(0);
+        })();
+    </script>
     <!-- Footer -->
     <footer class="pt-14 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 border-t border-current transition-colors">
         <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
@@ -1087,6 +1315,39 @@
             window.addEventListener('resize', onScroll);
             update();
         })();
+    
+        // Drag-to-scroll for desktop carousel (mirrors homepage Workshops pattern)
+        (function() {
+            const track = document.getElementById('t-track');
+            if (!track || window.matchMedia('(max-width: 767px)').matches) return;
+            let isDown = false, startX = 0, startScroll = 0, moved = false;
+            track.style.cursor = 'grab';
+            track.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                isDown = true; moved = false;
+                startX = e.pageX; startScroll = track.scrollLeft;
+                track.style.cursor = 'grabbing';
+                track.style.scrollSnapType = 'none';
+                e.preventDefault();
+            });
+            window.addEventListener('mouseup', () => {
+                if (!isDown) return;
+                isDown = false;
+                track.style.cursor = 'grab';
+                setTimeout(() => { track.style.scrollSnapType = ''; }, 600);
+            });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                const dx = (e.pageX - startX) * 2.2;
+                if (Math.abs(dx) > 4) moved = true;
+                track.scrollLeft = startScroll - dx;
+            });
+            // Suppress card click after drag
+            track.addEventListener('click', (e) => {
+                if (moved) { e.preventDefault(); e.stopPropagation(); }
+            }, true);
+        })();
+
     </script>
 </body>
 </html>
