@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#FDFBF9">
-    <title>Thank You · Scent.M</title>
+    <title>Personal Care · Boutique ODM · Scent.M</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,6 +433,17 @@
                 align-items: center;
             }
         }
+    
+        .caption-meta{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(59,38,29,0.55);line-height:1.6;}
+        @media(min-width:768px){.caption-meta{font-size:11px;}}
+        .grain{position:relative;}
+        .grain::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.231 0 0 0 0 0.149 0 0 0 0 0.114 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.09;mix-blend-mode:multiply;}
+        .pfx{will-change:transform;}
+        .conc-bar{position:relative;height:2px;background:rgba(59,38,29,0.12);overflow:hidden;}
+        .conc-fill{position:absolute;inset:0;background:#A64B2A;transform-origin:left;transform:scaleX(0);transition:transform 1.5s cubic-bezier(0.22,1,0.36,1);}
+        .ani-this.in .conc-fill{transform:scaleX(var(--fill,0.5));}
+        /* big italic display numeral */
+        .big-num{font-family:'Baskervville',serif;font-style:italic;color:#A64B2A;line-height:0.7;}
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
@@ -499,27 +510,107 @@
         </div>
     </div>
 
-    <!-- Thank-you · Centered editorial (matched to 404 pattern) -->
-    <section class="min-h-[80vh] min-h-[80svh] flex items-center px-6 md:px-12 py-24 md:py-32">
-        <div class="max-w-2xl mx-auto text-center">
-            <span class="font-serif italic text-brand-terracotta text-2xl md:text-3xl block mb-6 md:mb-8 ani-this bottom-in">— With gratitude —</span>
+    <nav id="odm-tabs" class="sticky top-0 z-40 bg-[#FDFBF9]/95 backdrop-blur border-y border-brand-brown/12">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12">
+            <ul class="flex gap-7 md:gap-12 overflow-x-auto hide-scrollbar py-4 md:py-5 font-sans text-[11px] md:text-sm tracking-[0.18em] uppercase whitespace-nowrap">
+                <li><a href="odm-perfume.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">01</span>香水 Perfume</a></li>
+                <li><a href="odm-home.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">02</span>家居香氛 Home</a></li>
+                <li><a href="odm-personal.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">03</span>個人護理 Personal Care</a></li>
+                <li><a href="odm-pet.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">04</span>寵物護理 Pet Care</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- breadcrumb -->
+    <header class="px-6 md:px-12 pt-28 md:pt-36 pb-4">
+        <div class="max-w-screen-2xl mx-auto">
+            <nav aria-label="Breadcrumb" class="font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase opacity-55 hero-fade-up opacity-0 translate-y-4">
+                <a href="index.html" class="hover:text-brand-terracotta transition-colors duration-300">← 返回首頁</a>
+            </nav>
+        </div>
+    </header>
 
-            <h1 class="fluid-display font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight text-brand-brown text-balance ani-this bottom-in delay-1 mb-10 md:mb-14">
-                你的訊息已送達。
-            </h1>
-
-            <p class="font-serif italic text-xl md:text-2xl text-brand-brown/65 max-w-xl mx-auto leading-[1.6] mb-12 md:mb-16 ani-this bottom-in delay-2 text-balance">
-                我哋會喺三個工作天內回覆你。同時，你可以喺右下角嘅 WhatsApp 與我哋即時傾談。
-            </p>
-
-            <div class="ani-this bottom-in delay-3 flex flex-wrap items-center justify-center gap-6 md:gap-10 font-sans text-xs md:text-sm tracking-[0.22em] uppercase">
-                <a href="index.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-brand-brown hover:border-brand-terracotta">返回首頁</a>
-                <a href="journal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">品牌日誌</a>
-                <a href="workshops.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">調香工藝體驗</a>
-                <a href="https://instagram.com/scentm" target="_blank" rel="noopener" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">Instagram</a>
+    <section class="relative px-6 md:px-12 pt-8 md:pt-16 pb-12 md:pb-20 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid grid-cols-12 gap-x-4 md:gap-x-6 items-end">
+                <span class="col-span-3 md:col-span-2 big-num text-[5rem] md:text-[9rem] lg:text-[11rem] self-start hero-fade-up opacity-0 translate-y-4" aria-hidden="true">03</span>
+                <div class="col-span-9 md:col-span-7 md:col-start-3 relative z-10">
+                    <span class="block font-sans text-[11px] md:text-xs tracking-[0.32em] uppercase text-brand-terracotta mb-6 md:mb-10 hero-fade-up opacity-0 translate-y-4">Boutique ODM · Service File</span>
+                    <h1 class="fluid-display font-serif text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[7.5rem] leading-[0.92] tracking-tight text-brand-brown hero-text opacity-0 translate-y-8">
+                        Personal<br><span class="italic text-brand-terracotta font-light">Care</span>.
+                    </h1>
+                </div>
+                <p class="col-span-12 md:col-span-3 md:col-start-10 mt-8 md:mt-0 font-serif italic text-lg md:text-xl text-brand-brown/65 leading-[1.55] hero-fade-up opacity-0 translate-y-4">嚴選溫和低敏配方，將專屬香氣融入客人的日常保養儀式。</p>
             </div>
         </div>
     </section>
+    <section class="px-6 md:px-12 py-10 md:py-16 ">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-8 items-center">
+            <figure class="col-span-12 md:col-span-5 md:col-start-1 pfx" data-speed="0.04">
+                <div class="w-full aspect-[4/3] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain"><img src="marketing.jpg" class="w-full h-full object-cover" alt="" loading="lazy"></div>
+            </figure>
+            <div class="col-span-12 md:col-span-6 md:col-start-7 ani-this bottom-in">
+                <span class="caption-meta block mb-3 md:mb-4">Cleansing</span>
+                <h3 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-brown leading-tight mb-4 md:mb-6">潔淨</h3>
+                <p class="font-sans text-base md:text-lg leading-[1.8] text-brand-brown/75 mb-5 md:mb-7 max-w-md">由溫和氨基酸基底到豐盈泡沫，為品牌打造日常潔淨儀式。</p>
+                <p class="font-serif italic text-base md:text-lg text-brand-terracotta">洗髮 · 沐浴 · 潔手乳</p>
+            </div>
+        </div>
+    </section>
+    <section class="px-6 md:px-12 py-10 md:py-16 border-t border-brand-brown/10">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-8 items-center">
+            <figure class="col-span-12 md:col-span-5 md:col-start-8 md:order-2 pfx" data-speed="-0.04">
+                <div class="w-full aspect-[4/3] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain"><img src="journal-3.jpg" class="w-full h-full object-cover" alt="" loading="lazy"></div>
+            </figure>
+            <div class="col-span-12 md:col-span-6 md:col-start-1 md:order-1 ani-this bottom-in">
+                <span class="caption-meta block mb-3 md:mb-4">Treatment</span>
+                <h3 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-brown leading-tight mb-4 md:mb-6">修護</h3>
+                <p class="font-sans text-base md:text-lg leading-[1.8] text-brand-brown/75 mb-5 md:mb-7 max-w-md">以保濕與修護為核心，配搭專屬香氣，延長氣味記憶。</p>
+                <p class="font-serif italic text-base md:text-lg text-brand-terracotta">護髮素 · 身體乳 · 護手霜</p>
+            </div>
+        </div>
+    </section>
+    <section class="px-6 md:px-12 py-10 md:py-16 border-t border-brand-brown/10">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-12 gap-x-4 md:gap-x-10 gap-y-8 items-center">
+            <figure class="col-span-12 md:col-span-5 md:col-start-1 pfx" data-speed="0.04">
+                <div class="w-full aspect-[4/3] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain"><img src="journal-1.jpg" class="w-full h-full object-cover" alt="" loading="lazy"></div>
+            </figure>
+            <div class="col-span-12 md:col-span-6 md:col-start-7 ani-this bottom-in">
+                <span class="caption-meta block mb-3 md:mb-4">Body & Ritual</span>
+                <h3 class="font-serif text-2xl md:text-3xl lg:text-4xl text-brand-brown leading-tight mb-4 md:mb-6">身體</h3>
+                <p class="font-sans text-base md:text-lg leading-[1.8] text-brand-brown/75 mb-5 md:mb-7 max-w-md">從質感到氣味，構築完整的身體護理體驗。</p>
+                <p class="font-serif italic text-base md:text-lg text-brand-terracotta">磨砂 · 按摩油 · 香體噴霧</p>
+            </div>
+        </div>
+    </section>
+    <!-- Closing CTA -->
+    <section class="relative px-6 md:px-12 py-16 md:py-32 overflow-hidden border-t border-brand-brown/10">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-12 gap-x-4 md:gap-x-8 items-center">
+            <div class="col-span-12 md:col-span-4 md:col-start-1 ani-this bottom-in mb-10 md:mb-0 relative z-10">
+                <span class="fluid-script-lg font-script text-brand-terracotta block mb-5 md:mb-7 leading-tight">Begin a conversation</span>
+                <p class="font-serif text-xl md:text-2xl lg:text-3xl leading-[1.4] text-brand-brown mb-8 md:mb-12 text-balance">準備好打造一系列<br><span class="italic text-brand-terracotta">個人護理</span>產品？</p>
+                <a href="contact.html#form" class="group inline-flex items-center gap-4 text-brand-brown uppercase tracking-widest text-sm md:text-base pb-2 border-b border-brand-brown hover:text-brand-terracotta hover:border-brand-terracotta transition duration-500 whitespace-nowrap font-medium">
+                    <span class="text-current font-medium">聯絡我們</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+            <figure class="col-span-12 md:col-span-7 md:col-start-6 pfx" data-speed="0.05">
+                <div class="w-full aspect-[16/10] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="perfume-2.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+            </figure>
+        </div>
+    </section>
+    <script>
+        (function(){
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            if (window.matchMedia('(max-width: 767px)').matches) return;
+            gsap.utils.toArray('.pfx').forEach(el=>{
+                const speed = parseFloat(el.dataset.speed||'0');
+                gsap.to(el, { yPercent: speed*100, ease:'none',
+                    scrollTrigger:{ trigger: el, start:'top bottom', end:'bottom top', scrub: true } });
+            });
+        })();
+    </script>
 
     <!-- Footer -->
     <footer class="pt-14 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 border-t border-current transition-colors">

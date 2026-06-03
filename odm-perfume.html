@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#FDFBF9">
-    <title>Thank You · Scent.M</title>
+    <title>Perfume · Boutique ODM · Scent.M</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,6 +433,17 @@
                 align-items: center;
             }
         }
+    
+        .caption-meta{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(59,38,29,0.55);line-height:1.6;}
+        @media(min-width:768px){.caption-meta{font-size:11px;}}
+        .grain{position:relative;}
+        .grain::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.231 0 0 0 0 0.149 0 0 0 0 0.114 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.09;mix-blend-mode:multiply;}
+        .pfx{will-change:transform;}
+        .conc-bar{position:relative;height:2px;background:rgba(59,38,29,0.12);overflow:hidden;}
+        .conc-fill{position:absolute;inset:0;background:#A64B2A;transform-origin:left;transform:scaleX(0);transition:transform 1.5s cubic-bezier(0.22,1,0.36,1);}
+        .ani-this.in .conc-fill{transform:scaleX(var(--fill,0.5));}
+        /* big italic display numeral */
+        .big-num{font-family:'Baskervville',serif;font-style:italic;color:#A64B2A;line-height:0.7;}
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
@@ -499,27 +510,160 @@
         </div>
     </div>
 
-    <!-- Thank-you · Centered editorial (matched to 404 pattern) -->
-    <section class="min-h-[80vh] min-h-[80svh] flex items-center px-6 md:px-12 py-24 md:py-32">
-        <div class="max-w-2xl mx-auto text-center">
-            <span class="font-serif italic text-brand-terracotta text-2xl md:text-3xl block mb-6 md:mb-8 ani-this bottom-in">— With gratitude —</span>
+    <nav id="odm-tabs" class="sticky top-0 z-40 bg-[#FDFBF9]/95 backdrop-blur border-y border-brand-brown/12">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12">
+            <ul class="flex gap-7 md:gap-12 overflow-x-auto hide-scrollbar py-4 md:py-5 font-sans text-[11px] md:text-sm tracking-[0.18em] uppercase whitespace-nowrap">
+                <li><a href="odm-perfume.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">01</span>香水 Perfume</a></li>
+                <li><a href="odm-home.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">02</span>家居香氛 Home</a></li>
+                <li><a href="odm-personal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">03</span>個人護理 Personal Care</a></li>
+                <li><a href="odm-pet.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">04</span>寵物護理 Pet Care</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- breadcrumb -->
+    <header class="px-6 md:px-12 pt-28 md:pt-36 pb-4">
+        <div class="max-w-screen-2xl mx-auto">
+            <nav aria-label="Breadcrumb" class="font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase opacity-55 hero-fade-up opacity-0 translate-y-4">
+                <a href="index.html" class="hover:text-brand-terracotta transition-colors duration-300">← 返回首頁</a>
+            </nav>
+        </div>
+    </header>
 
-            <h1 class="fluid-display font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight text-brand-brown text-balance ani-this bottom-in delay-1 mb-10 md:mb-14">
-                你的訊息已送達。
-            </h1>
-
-            <p class="font-serif italic text-xl md:text-2xl text-brand-brown/65 max-w-xl mx-auto leading-[1.6] mb-12 md:mb-16 ani-this bottom-in delay-2 text-balance">
-                我哋會喺三個工作天內回覆你。同時，你可以喺右下角嘅 WhatsApp 與我哋即時傾談。
-            </p>
-
-            <div class="ani-this bottom-in delay-3 flex flex-wrap items-center justify-center gap-6 md:gap-10 font-sans text-xs md:text-sm tracking-[0.22em] uppercase">
-                <a href="index.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-brand-brown hover:border-brand-terracotta">返回首頁</a>
-                <a href="journal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">品牌日誌</a>
-                <a href="workshops.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">調香工藝體驗</a>
-                <a href="https://instagram.com/scentm" target="_blank" rel="noopener" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">Instagram</a>
+    <section class="relative px-6 md:px-12 pt-8 md:pt-16 pb-12 md:pb-20 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid grid-cols-12 gap-x-4 md:gap-x-6 items-end">
+                <span class="col-span-3 md:col-span-2 big-num text-[5rem] md:text-[9rem] lg:text-[11rem] self-start hero-fade-up opacity-0 translate-y-4" aria-hidden="true">01</span>
+                <div class="col-span-9 md:col-span-7 md:col-start-3 relative z-10">
+                    <span class="block font-sans text-[11px] md:text-xs tracking-[0.32em] uppercase text-brand-terracotta mb-6 md:mb-10 hero-fade-up opacity-0 translate-y-4">Boutique ODM · Service File</span>
+                    <h1 class="fluid-display font-serif text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[7.5rem] leading-[0.92] tracking-tight text-brand-brown hero-text opacity-0 translate-y-8">
+                        Perfume<br><span class="italic text-brand-terracotta font-light">&amp; Fragrance</span>.
+                    </h1>
+                </div>
+                <p class="col-span-12 md:col-span-3 md:col-start-10 mt-8 md:mt-0 font-serif italic text-lg md:text-xl text-brand-brown/65 leading-[1.55] hero-fade-up opacity-0 translate-y-4">香水 ODM 的分類由 單體香料 或 自然香料 去展開其調香設計。</p>
             </div>
         </div>
     </section>
+    <!-- Manifesto + scattered material pair (extreme size contrast + align-self) -->
+    <section class="relative px-6 md:px-12 py-12 md:py-24 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-12 gap-x-4 md:gap-x-8 gap-y-12 items-center">
+            <!-- big manifesto, left -->
+            <div class="col-span-12 md:col-span-5 md:col-start-1 ani-this bottom-in">
+                <p class="font-serif text-[1.85rem] md:text-4xl lg:text-[3rem] leading-[1.25] text-brand-brown text-balance">
+                    香水可根據<br><span class="italic text-brand-terracotta font-light">香精濃度</span>，<br>分為不同類別。
+                </p>
+                <p class="font-sans text-sm md:text-base leading-[1.85] text-brand-brown/70 mt-7 md:mt-10 max-w-sm">詳細可以聯絡我們了解兩者的分別。同時我們亦提供無酒精香水、以植物基底油為主的香水滾珠棒、香水膏等。</p>
+                <p class="font-sans text-sm md:text-base leading-[1.85] text-brand-brown/70 mt-5 max-w-sm">每一種都有獨特的氣味濃度、持久度與存在感。您可以根據品牌的形象和喜好去選擇香水的 ODM 方向。</p>
+            </div>
+            <!-- medium image, lower -->
+            <figure class="col-span-7 md:col-span-4 md:col-start-7 self-end md:mt-24 pfx" data-speed="0.05">
+                <div class="w-full aspect-[4/5] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="perfume-4.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+                <figcaption class="caption-meta mt-3">自然香料 · Natural</figcaption>
+            </figure>
+            <!-- tiny image, top -->
+            <figure class="col-span-5 md:col-span-2 md:col-start-11 self-start md:-mt-12 pfx" data-speed="-0.06">
+                <div class="w-full aspect-square rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="perfume-2.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+                <figcaption class="caption-meta mt-2">單體香料 · Single-note</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Concentration ladder — staircase: each row indents progressively right -->
+    <section class="px-6 md:px-12 py-16 md:py-28 bg-brand-beige/40 border-y border-brand-brown/10 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto">
+            <span class="caption-meta block mb-12 md:mb-24 ani-this bottom-in">香精濃度階梯 · The Concentration Ladder</span>
+            
+            <article class="ani-this bottom-in" style="margin-left:0%;">
+                <div class="grid grid-cols-12 gap-3 md:gap-8 items-baseline  py-7 md:py-11" style="max-width:100%;">
+                    <span class="col-span-2 md:col-span-1 big-num text-4xl md:text-5xl lg:text-6xl">01</span>
+                    <div class="col-span-10 md:col-span-4">
+                        <p class="font-serif text-xl md:text-3xl lg:text-4xl text-brand-brown leading-tight">Eau de Cologne</p>
+                        <span class="caption-meta block mt-1.5 md:mt-2">EDC</span>
+                    </div>
+                    <div class="col-span-5 md:col-span-3">
+                        <p class="font-serif italic text-3xl md:text-4xl lg:text-5xl text-brand-terracotta leading-none mb-3 md:mb-4">2–5%</p>
+                        <div class="conc-bar"><div class="conc-fill" style="--fill:0.17;"></div></div>
+                    </div>
+                    <p class="col-span-7 md:col-span-4 font-sans text-sm md:text-base lg:text-lg leading-[1.7] text-brand-brown/75">古龍水一般香精濃度約為 2–5%，質感清新輕盈，適合較大面積、較頻密地補噴，帶來若有若無的香氣存在感。</p>
+                </div>
+            </article>
+            <article class="ani-this bottom-in delay-1" style="margin-left:6%;">
+                <div class="grid grid-cols-12 gap-3 md:gap-8 items-baseline border-t border-brand-brown/15 py-7 md:py-11" style="max-width:94%;">
+                    <span class="col-span-2 md:col-span-1 big-num text-4xl md:text-5xl lg:text-6xl">02</span>
+                    <div class="col-span-10 md:col-span-4">
+                        <p class="font-serif text-xl md:text-3xl lg:text-4xl text-brand-brown leading-tight">Eau de Toilette</p>
+                        <span class="caption-meta block mt-1.5 md:mt-2">EDT</span>
+                    </div>
+                    <div class="col-span-5 md:col-span-3">
+                        <p class="font-serif italic text-3xl md:text-4xl lg:text-5xl text-brand-terracotta leading-none mb-3 md:mb-4">5–15%</p>
+                        <div class="conc-bar"><div class="conc-fill" style="--fill:0.4;"></div></div>
+                    </div>
+                    <p class="col-span-7 md:col-span-4 font-sans text-sm md:text-base lg:text-lg leading-[1.7] text-brand-brown/75">淡香水通常含有約 5–15% 的香精濃度，香氣明顯但不會過於厚重，非常適合日常使用，既有存在感又保留適度呼吸空間。</p>
+                </div>
+            </article>
+            <article class="ani-this bottom-in delay-2" style="margin-left:12%;">
+                <div class="grid grid-cols-12 gap-3 md:gap-8 items-baseline border-t border-brand-brown/15 py-7 md:py-11" style="max-width:88%;">
+                    <span class="col-span-2 md:col-span-1 big-num text-4xl md:text-5xl lg:text-6xl">03</span>
+                    <div class="col-span-10 md:col-span-4">
+                        <p class="font-serif text-xl md:text-3xl lg:text-4xl text-brand-brown leading-tight">Eau de Parfum</p>
+                        <span class="caption-meta block mt-1.5 md:mt-2">EDP</span>
+                    </div>
+                    <div class="col-span-5 md:col-span-3">
+                        <p class="font-serif italic text-3xl md:text-4xl lg:text-5xl text-brand-terracotta leading-none mb-3 md:mb-4">15–20%</p>
+                        <div class="conc-bar"><div class="conc-fill" style="--fill:0.65;"></div></div>
+                    </div>
+                    <p class="col-span-7 md:col-span-4 font-sans text-sm md:text-base lg:text-lg leading-[1.7] text-brand-brown/75">淡香精香精濃度約為 15–20%，氣味更為飽滿細膩，留香時間更長，層次感較豐富，能在肌膚上留下更具個性的香氣印記。</p>
+                </div>
+            </article>
+            <article class="ani-this bottom-in delay-3" style="margin-left:18%;">
+                <div class="grid grid-cols-12 gap-3 md:gap-8 items-baseline border-t border-brand-brown/15 py-7 md:py-11" style="max-width:82%;">
+                    <span class="col-span-2 md:col-span-1 big-num text-4xl md:text-5xl lg:text-6xl">04</span>
+                    <div class="col-span-10 md:col-span-4">
+                        <p class="font-serif text-xl md:text-3xl lg:text-4xl text-brand-brown leading-tight">Parfum</p>
+                        <span class="caption-meta block mt-1.5 md:mt-2">Extrait</span>
+                    </div>
+                    <div class="col-span-5 md:col-span-3">
+                        <p class="font-serif italic text-3xl md:text-4xl lg:text-5xl text-brand-terracotta leading-none mb-3 md:mb-4">20–30%+</p>
+                        <div class="conc-bar"><div class="conc-fill" style="--fill:1;"></div></div>
+                    </div>
+                    <p class="col-span-7 md:col-span-4 font-sans text-sm md:text-base lg:text-lg leading-[1.7] text-brand-brown/75">香精（又稱香精原液或 Extrait de Parfum）擁有最高香精濃度，通常約 20–30% 甚至更高，氣味濃郁奢華，只需少量即可在肌膚上形成極具存在感且持久的香氣。</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="relative px-6 md:px-12 py-16 md:py-32 overflow-hidden border-t border-brand-brown/10">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-12 gap-x-4 md:gap-x-8 items-center">
+            <div class="col-span-12 md:col-span-4 md:col-start-1 ani-this bottom-in mb-10 md:mb-0 relative z-10">
+                <span class="fluid-script-lg font-script text-brand-terracotta block mb-5 md:mb-7 leading-tight">Begin a conversation</span>
+                <p class="font-serif text-xl md:text-2xl lg:text-3xl leading-[1.4] text-brand-brown mb-8 md:mb-12 text-balance">準備好為品牌<br>打造一支<span class="italic text-brand-terracotta">專屬香水</span>？</p>
+                <a href="contact.html#form" class="group inline-flex items-center gap-4 text-brand-brown uppercase tracking-widest text-sm md:text-base pb-2 border-b border-brand-brown hover:text-brand-terracotta hover:border-brand-terracotta transition duration-500 whitespace-nowrap font-medium">
+                    <span class="text-current font-medium">聯絡我們</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+            <figure class="col-span-12 md:col-span-7 md:col-start-6 pfx" data-speed="0.05">
+                <div class="w-full aspect-[16/10] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="perfume-2.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+            </figure>
+        </div>
+    </section>
+    <script>
+        (function(){
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            if (window.matchMedia('(max-width: 767px)').matches) return;
+            gsap.utils.toArray('.pfx').forEach(el=>{
+                const speed = parseFloat(el.dataset.speed||'0');
+                gsap.to(el, { yPercent: speed*100, ease:'none',
+                    scrollTrigger:{ trigger: el, start:'top bottom', end:'bottom top', scrub: true } });
+            });
+        })();
+    </script>
 
     <!-- Footer -->
     <footer class="pt-14 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 border-t border-current transition-colors">

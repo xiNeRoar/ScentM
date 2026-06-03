@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#FDFBF9">
-    <title>Thank You · Scent.M</title>
+    <title>Home Fragrance · Boutique ODM · Scent.M</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,6 +433,17 @@
                 align-items: center;
             }
         }
+    
+        .caption-meta{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(59,38,29,0.55);line-height:1.6;}
+        @media(min-width:768px){.caption-meta{font-size:11px;}}
+        .grain{position:relative;}
+        .grain::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.231 0 0 0 0 0.149 0 0 0 0 0.114 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.09;mix-blend-mode:multiply;}
+        .pfx{will-change:transform;}
+        .conc-bar{position:relative;height:2px;background:rgba(59,38,29,0.12);overflow:hidden;}
+        .conc-fill{position:absolute;inset:0;background:#A64B2A;transform-origin:left;transform:scaleX(0);transition:transform 1.5s cubic-bezier(0.22,1,0.36,1);}
+        .ani-this.in .conc-fill{transform:scaleX(var(--fill,0.5));}
+        /* big italic display numeral */
+        .big-num{font-family:'Baskervville',serif;font-style:italic;color:#A64B2A;line-height:0.7;}
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
@@ -499,27 +510,176 @@
         </div>
     </div>
 
-    <!-- Thank-you · Centered editorial (matched to 404 pattern) -->
-    <section class="min-h-[80vh] min-h-[80svh] flex items-center px-6 md:px-12 py-24 md:py-32">
-        <div class="max-w-2xl mx-auto text-center">
-            <span class="font-serif italic text-brand-terracotta text-2xl md:text-3xl block mb-6 md:mb-8 ani-this bottom-in">— With gratitude —</span>
+    <nav id="odm-tabs" class="sticky top-0 z-40 bg-[#FDFBF9]/95 backdrop-blur border-y border-brand-brown/12">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12">
+            <ul class="flex gap-7 md:gap-12 overflow-x-auto hide-scrollbar py-4 md:py-5 font-sans text-[11px] md:text-sm tracking-[0.18em] uppercase whitespace-nowrap">
+                <li><a href="odm-perfume.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">01</span>香水 Perfume</a></li>
+                <li><a href="odm-home.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">02</span>家居香氛 Home</a></li>
+                <li><a href="odm-personal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">03</span>個人護理 Personal Care</a></li>
+                <li><a href="odm-pet.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">04</span>寵物護理 Pet Care</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- breadcrumb -->
+    <header class="px-6 md:px-12 pt-28 md:pt-36 pb-4">
+        <div class="max-w-screen-2xl mx-auto">
+            <nav aria-label="Breadcrumb" class="font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase opacity-55 hero-fade-up opacity-0 translate-y-4">
+                <a href="index.html" class="hover:text-brand-terracotta transition-colors duration-300">← 返回首頁</a>
+            </nav>
+        </div>
+    </header>
 
-            <h1 class="fluid-display font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight text-brand-brown text-balance ani-this bottom-in delay-1 mb-10 md:mb-14">
-                你的訊息已送達。
-            </h1>
-
-            <p class="font-serif italic text-xl md:text-2xl text-brand-brown/65 max-w-xl mx-auto leading-[1.6] mb-12 md:mb-16 ani-this bottom-in delay-2 text-balance">
-                我哋會喺三個工作天內回覆你。同時，你可以喺右下角嘅 WhatsApp 與我哋即時傾談。
-            </p>
-
-            <div class="ani-this bottom-in delay-3 flex flex-wrap items-center justify-center gap-6 md:gap-10 font-sans text-xs md:text-sm tracking-[0.22em] uppercase">
-                <a href="index.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-brand-brown hover:border-brand-terracotta">返回首頁</a>
-                <a href="journal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">品牌日誌</a>
-                <a href="workshops.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">調香工藝體驗</a>
-                <a href="https://instagram.com/scentm" target="_blank" rel="noopener" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">Instagram</a>
+    <!-- Hero -->
+    <section class="relative px-6 md:px-12 pt-8 md:pt-16 pb-12 md:pb-20 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid grid-cols-12 gap-x-4 md:gap-x-6 items-end">
+                <span class="col-span-3 md:col-span-2 big-num text-[5rem] md:text-[9rem] lg:text-[11rem] self-start hero-fade-up opacity-0 translate-y-4" aria-hidden="true">02</span>
+                <div class="col-span-9 md:col-span-7 md:col-start-3 relative z-10">
+                    <span class="block font-sans text-[11px] md:text-xs tracking-[0.32em] uppercase text-brand-terracotta mb-6 md:mb-10 hero-fade-up opacity-0 translate-y-4">Boutique ODM · Service File</span>
+                    <h1 class="fluid-display font-serif text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[7.5rem] leading-[0.92] tracking-tight text-brand-brown hero-text opacity-0 translate-y-8">
+                        Home<br><span class="italic text-brand-terracotta font-light">Fragrance</span>.
+                    </h1>
+                </div>
+                <p class="col-span-12 md:col-span-3 md:col-start-10 mt-8 md:mt-0 font-serif italic text-lg md:text-xl text-brand-brown/65 leading-[1.55] hero-fade-up opacity-0 translate-y-4">將品牌專屬美學與氣味輪廓，延伸至客人的日常生活空間。</p>
             </div>
         </div>
     </section>
+
+    <!-- §B · capability diagram (clickable, controls slider) -->
+    <section class="px-6 md:px-12 py-16 md:py-28 bg-brand-beige/40 border-y border-brand-brown/10 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="grid grid-cols-12 gap-x-4 md:gap-x-8 items-end mb-12 md:mb-20">
+                <span class="col-span-12 md:col-span-5 caption-meta ani-this bottom-in">由一支香氣展開 · One signature, five expressions</span>
+                <p class="col-span-12 md:col-span-6 md:col-start-7 mt-4 md:mt-0 font-sans text-sm md:text-base leading-[1.85] text-brand-brown/70 ani-this bottom-in delay-1">從天然大豆蠟燭、高品質室內擴香到空間噴霧，我們提供五種家居香氛載體。每一件都可承載您的品牌氣味輪廓，並融入客人的日常生活之中。</p>
+            </div>
+
+            <div class="text-center mb-14 md:mb-24 ani-this bottom-in">
+                <span class="fluid-script-lg font-script text-brand-terracotta block leading-tight mb-2">Your signature</span>
+                <p class="font-serif italic text-xl md:text-2xl text-brand-brown/60">品牌專屬香氣輪廓</p>
+                <span class="block mx-auto mt-7 md:mt-10 w-px h-12 md:h-20 bg-brand-brown/25"></span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-12 gap-x-6 md:gap-x-8" id="vsl-tabs">
+                    <button type="button" class="vsl-tab ani-this bottom-in text-center md:border-l md:border-brand-brown/12 md:first:border-l-0 md:px-4 group" data-idx="0">
+                        <span class="font-serif italic text-lg md:text-xl block mb-4 md:mb-6 vsl-num">01</span>
+                        <h3 class="font-serif text-xl md:text-2xl lg:text-[1.75rem] leading-tight mb-2 vsl-zh transition-colors duration-300">擴香瓶</h3>
+                        <span class="caption-meta block mb-4 md:mb-5">Reed Diffuser</span>
+                        <p class="font-serif italic text-sm md:text-base text-brand-terracotta mb-3 md:mb-4">長效 · 持續</p>
+                        <p class="font-sans text-xs md:text-sm leading-[1.7] text-brand-brown/65">藤枝緩釋，適合大堂、走廊與店舖的長時間佈香。</p>
+                    </button>
+                    <button type="button" class="vsl-tab ani-this bottom-in delay-1 text-center md:border-l md:border-brand-brown/12 md:first:border-l-0 md:px-4 group" data-idx="1">
+                        <span class="font-serif italic text-lg md:text-xl block mb-4 md:mb-6 vsl-num">02</span>
+                        <h3 class="font-serif text-xl md:text-2xl lg:text-[1.75rem] leading-tight mb-2 vsl-zh transition-colors duration-300">香薰蠟燭</h3>
+                        <span class="caption-meta block mb-4 md:mb-5">Scented Candle</span>
+                        <p class="font-serif italic text-sm md:text-base text-brand-terracotta mb-3 md:mb-4">氛圍 · 溫度</p>
+                        <p class="font-sans text-xs md:text-sm leading-[1.7] text-brand-brown/65">天然大豆蠟與木質燭芯，以燭光與香氣營造空間溫度。</p>
+                    </button>
+                    <button type="button" class="vsl-tab ani-this bottom-in delay-2 text-center md:border-l md:border-brand-brown/12 md:first:border-l-0 md:px-4 group" data-idx="2">
+                        <span class="font-serif italic text-lg md:text-xl block mb-4 md:mb-6 vsl-num">03</span>
+                        <h3 class="font-serif text-xl md:text-2xl lg:text-[1.75rem] leading-tight mb-2 vsl-zh transition-colors duration-300">室內噴霧</h3>
+                        <span class="caption-meta block mb-4 md:mb-5">Room Spray</span>
+                        <p class="font-serif italic text-sm md:text-base text-brand-terracotta mb-3 md:mb-4">即時 · 靈活</p>
+                        <p class="font-sans text-xs md:text-sm leading-[1.7] text-brand-brown/65">一噴即香，適合活動、快閃與短期佈置的彈性方案。</p>
+                    </button>
+                    <button type="button" class="vsl-tab ani-this bottom-in delay-3 text-center md:border-l md:border-brand-brown/12 md:first:border-l-0 md:px-4 group" data-idx="3">
+                        <span class="font-serif italic text-lg md:text-xl block mb-4 md:mb-6 vsl-num">04</span>
+                        <h3 class="font-serif text-xl md:text-2xl lg:text-[1.75rem] leading-tight mb-2 vsl-zh transition-colors duration-300">擴香石</h3>
+                        <span class="caption-meta block mb-4 md:mb-5">Scent Stone</span>
+                        <p class="font-serif italic text-sm md:text-base text-brand-terracotta mb-3 md:mb-4">無火 · 裝飾</p>
+                        <p class="font-sans text-xs md:text-sm leading-[1.7] text-brand-brown/65">石膏與精油結合，無火安全，兼具香氣與擺設功能。</p>
+                    </button>
+                    <button type="button" class="vsl-tab ani-this bottom-in delay-4 text-center md:border-l md:border-brand-brown/12 md:first:border-l-0 md:px-4 group" data-idx="4">
+                        <span class="font-serif italic text-lg md:text-xl block mb-4 md:mb-6 vsl-num">05</span>
+                        <h3 class="font-serif text-xl md:text-2xl lg:text-[1.75rem] leading-tight mb-2 vsl-zh transition-colors duration-300">車載擴香</h3>
+                        <span class="caption-meta block mb-4 md:mb-5">Car Diffuser</span>
+                        <p class="font-serif italic text-sm md:text-base text-brand-terracotta mb-3 md:mb-4">隨行 · 延伸</p>
+                        <p class="font-sans text-xs md:text-sm leading-[1.7] text-brand-brown/65">小巧造型，把品牌氣味延伸至客人的移動空間。</p>
+                    </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- §C · large slider controlled by §B -->
+    <section class="px-6 md:px-12 py-12 md:py-20 overflow-hidden">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="relative w-full aspect-[16/10] md:aspect-[21/9] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain" id="vsl-stage">
+                    <figure class="vsl-slide absolute inset-0 transition-opacity duration-700 opacity-100" data-slide="0">
+                        <img src="marketing.jpg" class="w-full h-full object-cover" alt="擴香瓶" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-brown/55 via-transparent to-transparent"></div>
+                        <figcaption class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-brand-beige">
+                            <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase" style="color:rgba(243,234,225,0.7)">01 · Reed Diffuser</span>
+                            <p class="font-serif text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">擴香瓶</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="vsl-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none" data-slide="1">
+                        <img src="journal-3.jpg" class="w-full h-full object-cover" alt="香薰蠟燭" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-brown/55 via-transparent to-transparent"></div>
+                        <figcaption class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-brand-beige">
+                            <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase" style="color:rgba(243,234,225,0.7)">02 · Scented Candle</span>
+                            <p class="font-serif text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">香薰蠟燭</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="vsl-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none" data-slide="2">
+                        <img src="hero.jpg" class="w-full h-full object-cover" alt="室內噴霧" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-brown/55 via-transparent to-transparent"></div>
+                        <figcaption class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-brand-beige">
+                            <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase" style="color:rgba(243,234,225,0.7)">03 · Room Spray</span>
+                            <p class="font-serif text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">室內噴霧</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="vsl-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none" data-slide="3">
+                        <img src="odm-perfume.jpg" class="w-full h-full object-cover" alt="擴香石" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-brown/55 via-transparent to-transparent"></div>
+                        <figcaption class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-brand-beige">
+                            <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase" style="color:rgba(243,234,225,0.7)">04 · Scent Stone</span>
+                            <p class="font-serif text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">擴香石</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="vsl-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none" data-slide="4">
+                        <img src="perfume-2.jpg" class="w-full h-full object-cover" alt="車載擴香" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-brown/55 via-transparent to-transparent"></div>
+                        <figcaption class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-brand-beige">
+                            <span class="font-sans text-[10px] md:text-xs tracking-[0.28em] uppercase" style="color:rgba(243,234,225,0.7)">05 · Car Diffuser</span>
+                            <p class="font-serif text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">車載擴香</p>
+                        </figcaption>
+                    </figure>
+            </div>
+            <!-- progress dots -->
+            <div class="flex items-center gap-3 mt-6 md:mt-8" id="vsl-dots">
+                <button type="button" class="vsl-dot h-px transition-all duration-500 w-12 bg-brand-terracotta" data-idx="0" aria-label="擴香瓶"></button>
+                <button type="button" class="vsl-dot h-px transition-all duration-500 w-6 bg-brand-brown/25" data-idx="1" aria-label="香薰蠟燭"></button>
+                <button type="button" class="vsl-dot h-px transition-all duration-500 w-6 bg-brand-brown/25" data-idx="2" aria-label="室內噴霧"></button>
+                <button type="button" class="vsl-dot h-px transition-all duration-500 w-6 bg-brand-brown/25" data-idx="3" aria-label="擴香石"></button>
+                <button type="button" class="vsl-dot h-px transition-all duration-500 w-6 bg-brand-brown/25" data-idx="4" aria-label="車載擴香"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA — distinct dark band -->
+    <section class="theme-switch relative px-6 md:px-12 py-24 md:py-40 bg-brand-brown overflow-hidden mt-8 md:mt-16" data-switchto="brown">
+        <div class="max-w-screen-2xl mx-auto text-center">
+            <span class="fluid-script-lg font-script text-brand-terracotta block mb-5 md:mb-8 leading-tight ani-this bottom-in">Begin a conversation</span>
+            <p class="font-serif text-2xl md:text-4xl lg:text-[3rem] leading-[1.2] text-brand-beige mb-10 md:mb-14 text-balance ani-this bottom-in delay-1">準備好讓品牌氣味<br>進駐<span class="italic text-brand-terracotta">每個空間</span>？</p>
+            <div class="ani-this bottom-in delay-2">
+                <a href="contact.html#form" class="group inline-flex items-center gap-4 text-brand-beige uppercase tracking-widest text-sm md:text-base pb-2 border-b border-brand-beige hover:text-brand-terracotta hover:border-brand-terracotta transition duration-500 whitespace-nowrap font-medium">
+                    <span class="text-current font-medium">聯絡我們</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function(){
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+            if (window.matchMedia('(max-width: 767px)').matches) return;
+            gsap.utils.toArray('.pfx').forEach(el=>{
+                const speed = parseFloat(el.dataset.speed||'0');
+                gsap.to(el, { yPercent: speed*100, ease:'none',
+                    scrollTrigger:{ trigger: el, start:'top bottom', end:'bottom top', scrub: true } });
+            });
+        })();
+    </script>
 
     <!-- Footer -->
     <footer class="pt-14 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 border-t border-current transition-colors">
@@ -948,6 +1108,30 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', onScroll);
             update();
+        })();
+    </script>
+    <style>
+        .vsl-tab { cursor: pointer; }
+        .vsl-tab .vsl-num { color: rgba(59,38,29,0.3); transition: color 0.3s; }
+        .vsl-tab .vsl-zh { color: rgba(59,38,29,0.5); }
+        .vsl-tab.is-active .vsl-num { color: #A64B2A; }
+        .vsl-tab.is-active .vsl-zh { color: #3B261D; }
+        .vsl-tab:hover .vsl-zh { color: #A64B2A; }
+    </style>
+    <script>
+        (function(){
+            const tabs=[...document.querySelectorAll('.vsl-tab')];
+            const slides=[...document.querySelectorAll('.vsl-slide')];
+            const dots=[...document.querySelectorAll('.vsl-dot')];
+            if(!tabs.length) return;
+            const sel=(n)=>{
+                tabs.forEach((t,i)=>t.classList.toggle('is-active',i===n));
+                slides.forEach((s,i)=>{s.classList.toggle('opacity-100',i===n);s.classList.toggle('opacity-0',i!==n);s.classList.toggle('pointer-events-none',i!==n);});
+                dots.forEach((d,i)=>{d.classList.toggle('w-12',i===n);d.classList.toggle('bg-brand-terracotta',i===n);d.classList.toggle('w-6',i!==n);d.classList.toggle('bg-brand-brown/25',i!==n);});
+            };
+            tabs.forEach((t,i)=>t.addEventListener('click',()=>sel(i)));
+            dots.forEach((d,i)=>d.addEventListener('click',()=>sel(i)));
+            sel(0);
         })();
     </script>
 </body>

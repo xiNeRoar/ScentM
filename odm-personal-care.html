@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#FDFBF9">
-    <title>Thank You · Scent.M</title>
+    <title>Personal Care · Boutique ODM · Scent.M</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,6 +433,15 @@
                 align-items: center;
             }
         }
+    
+        .caption-meta { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:rgba(59,38,29,0.55); line-height:1.6; }
+        @media (min-width:768px){ .caption-meta{ font-size:11px; } }
+        .grain { position:relative; }
+        .grain::after { content:''; position:absolute; inset:0; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.231 0 0 0 0 0.149 0 0 0 0 0.114 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.1; mix-blend-mode:multiply; }
+        /* concentration fill bar */
+        .conc-bar { position:relative; height:3px; background:rgba(59,38,29,0.1); border-radius:2px; overflow:hidden; }
+        .conc-fill { position:absolute; inset:0; background:#A64B2A; transform-origin:left; transform:scaleX(0); transition:transform 1.4s cubic-bezier(0.22,1,0.36,1); }
+        .ani-this.in .conc-fill { transform:scaleX(var(--fill,0.5)); }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
@@ -476,7 +485,7 @@
     <div id="fullscreen-menu" class="fixed inset-0 bg-[#111111] z-[60] flex flex-col px-6 md:px-12 invisible opacity-0 overflow-y-auto" style="padding-top: max(6rem, calc(env(safe-area-inset-top) + 5rem)); padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 2rem));">
         <div class="max-w-screen-2xl mx-auto w-full flex flex-col gap-4 md:gap-8 text-brand-beige my-auto">
             <div class="overflow-hidden pb-2"><a href="about.html" class="menu-link text-[2.75rem] sm:text-5xl md:text-7xl font-serif italic tracking-tight block w-max hover:text-brand-terracotta transition-colors duration-300">About.</a></div>
-            <div class="overflow-hidden pb-2"><a href="odm-perfume.html" class="menu-link text-[2.75rem] sm:text-5xl md:text-7xl font-serif italic tracking-tight block w-max hover:text-brand-terracotta transition-colors duration-300">Boutique ODM.</a></div>
+            <div class="overflow-hidden pb-2"><a href="index.html#odm" class="menu-link text-[2.75rem] sm:text-5xl md:text-7xl font-serif italic tracking-tight block w-max hover:text-brand-terracotta transition-colors duration-300">Boutique ODM.</a></div>
             <div class="overflow-hidden pb-2"><a href="workshops.html" class="menu-link text-[2.75rem] sm:text-5xl md:text-7xl font-serif italic tracking-tight block w-max hover:text-brand-terracotta transition-colors duration-300">Workshops.</a></div>
             <div class="overflow-hidden pb-2"><a href="index.html#services" class="menu-link text-[2.75rem] sm:text-5xl md:text-7xl font-serif italic tracking-tight block w-max hover:text-brand-terracotta transition-colors duration-300">Scent Marketing.</a></div>
             <div class="overflow-hidden pb-2"><a href="journal.html" class="menu-link text-[2.75rem] sm:text-5xl md:text-7xl font-serif italic tracking-tight block w-max hover:text-brand-terracotta transition-colors duration-300">Journal.</a></div>
@@ -499,29 +508,91 @@
         </div>
     </div>
 
-    <!-- Thank-you · Centered editorial (matched to 404 pattern) -->
-    <section class="min-h-[80vh] min-h-[80svh] flex items-center px-6 md:px-12 py-24 md:py-32">
-        <div class="max-w-2xl mx-auto text-center">
-            <span class="font-serif italic text-brand-terracotta text-2xl md:text-3xl block mb-6 md:mb-8 ani-this bottom-in">— With gratitude —</span>
-
-            <h1 class="fluid-display font-serif text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] tracking-tight text-brand-brown text-balance ani-this bottom-in delay-1 mb-10 md:mb-14">
-                你的訊息已送達。
-            </h1>
-
-            <p class="font-serif italic text-xl md:text-2xl text-brand-brown/65 max-w-xl mx-auto leading-[1.6] mb-12 md:mb-16 ani-this bottom-in delay-2 text-balance">
-                我哋會喺三個工作天內回覆你。同時，你可以喺右下角嘅 WhatsApp 與我哋即時傾談。
+    <header class="relative min-h-[78vh] min-h-[78svh] md:min-h-[88vh] pt-20 md:pt-24 px-0 flex flex-col justify-end overflow-hidden grain">
+        <div class="absolute inset-0 z-0">
+            <img src="journal-1.jpg" class="hero-img w-full h-full object-cover" alt="個人護理" loading="eager">
+            <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(59,38,29,0.2) 0%, rgba(59,38,29,0) 40%, rgba(59,38,29,0.82) 100%);"></div>
+        </div>
+        <div id="hero-mask" class="absolute inset-0 bg-[#FDFBF9] z-10 origin-bottom"></div>
+        <div class="relative z-20 px-6 md:px-12 pb-12 md:pb-20">
+            <div class="max-w-screen-2xl mx-auto">
+                <nav aria-label="Breadcrumb" class="mb-6 md:mb-10 font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase hero-fade-up opacity-0 translate-y-4" style="color:rgba(243,234,225,0.75);">
+                    <a href="index.html#odm" class="hover:text-brand-beige transition-colors duration-300">← 靈活代工 Boutique ODM</a>
+                </nav>
+                <span class="block font-sans text-[11px] md:text-xs tracking-[0.32em] uppercase mb-4 md:mb-6 hero-fade-up opacity-0 translate-y-4" style="color:rgba(243,234,225,0.7);">Boutique ODM · 03</span>
+                <h1 class="fluid-display font-serif text-[3rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[0.95] tracking-tight text-brand-beige hero-text opacity-0 translate-y-8 max-w-[18ch]">
+                    Personal Care <span class="italic text-brand-terracotta font-light">個人護理</span>.
+                </h1>
+            </div>
+        </div>
+    </header>
+    <section class="px-6 md:px-12 py-20 md:py-28">
+        <div class="max-w-3xl mx-auto text-center ani-this bottom-in">
+            <p class="font-serif text-2xl md:text-3xl lg:text-[2.2rem] leading-[1.45] text-brand-brown text-balance">
+                護膚品方面，可因應不同受眾的膚質，<br class="hidden md:inline">設計相應的配方，作為每一個產品線。
             </p>
-
-            <div class="ani-this bottom-in delay-3 flex flex-wrap items-center justify-center gap-6 md:gap-10 font-sans text-xs md:text-sm tracking-[0.22em] uppercase">
-                <a href="index.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-brand-brown hover:border-brand-terracotta">返回首頁</a>
-                <a href="journal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">品牌日誌</a>
-                <a href="workshops.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">調香工藝體驗</a>
-                <a href="https://instagram.com/scentm" target="_blank" rel="noopener" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300 pb-1 border-b border-transparent hover:border-brand-terracotta">Instagram</a>
+        </div>
+    </section>
+    
+    <section class="px-6 md:px-12 py-12 md:py-20 ">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
+            <div class="md:col-span-5 md:col-start-1 ani-this bottom-in">
+                <div class="w-full aspect-[4/3] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="journal-1.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-7 ani-this bottom-in delay-1">
+                <span class="caption-meta block mb-3 md:mb-4">Cleansing</span>
+                <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl text-brand-brown leading-tight mb-7 md:mb-10">潔面</h3>
+                <ul class="flex flex-wrap gap-x-5 gap-y-3 md:gap-x-7 md:gap-y-4">
+                    <li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">潔面奶</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">潔面泡泡</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">卸妝液</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">卸妝油</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">潔面粉</li>
+                </ul>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
+    <section class="px-6 md:px-12 py-12 md:py-20 bg-brand-beige/40">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
+            <div class="md:col-span-5 md:col-start-8 md:order-2 ani-this bottom-in">
+                <div class="w-full aspect-[4/3] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="odm-perfume.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 ani-this bottom-in delay-1">
+                <span class="caption-meta block mb-3 md:mb-4">Skin Repair</span>
+                <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl text-brand-brown leading-tight mb-7 md:mb-10">日常肌膚修護</h3>
+                <ul class="flex flex-wrap gap-x-5 gap-y-3 md:gap-x-7 md:gap-y-4">
+                    <li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">爽膚水</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">神仙水</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">精華水</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">精華液</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">精華啫喱</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">精華安瓶</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">乳液</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">乳霜</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">面膜</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">物理性防曬</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="px-6 md:px-12 py-12 md:py-20 ">
+        <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
+            <div class="md:col-span-5 md:col-start-1 ani-this bottom-in">
+                <div class="w-full aspect-[4/3] rounded-sm overflow-hidden film-filter bg-[#E5D5C5] grain">
+                    <img src="marketing.jpg" class="w-full h-full object-cover" alt="" loading="lazy">
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-7 ani-this bottom-in delay-1">
+                <span class="caption-meta block mb-3 md:mb-4">Body Care</span>
+                <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl text-brand-brown leading-tight mb-7 md:mb-10">日常身體護理</h3>
+                <ul class="flex flex-wrap gap-x-5 gap-y-3 md:gap-x-7 md:gap-y-4">
+                    <li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">護手霜</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">身體乳霜</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">身體乳液</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">沖涼液</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">洗頭水</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl italic text-brand-terracotta font-light leading-tight">護髮素</li><li class="font-serif text-lg md:text-xl text-brand-brown/25 self-center">·</li><li class="font-serif text-lg md:text-xl text-brand-brown leading-tight">安睡噴霧</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="px-6 md:px-12 pb-32 md:pb-48 pt-12 md:pt-20">
+        <div class="max-w-2xl mx-auto text-center">
+            <span class="fluid-script-lg font-script text-brand-terracotta block mb-6 md:mb-8 ani-this bottom-in leading-tight">Begin a conversation</span>
+            <div class="ani-this bottom-in delay-1">
+                <a href="contact.html#form" class="group inline-flex items-center gap-4 bg-transparent text-brand-brown uppercase tracking-widest text-sm md:text-base pb-2 border-b border-brand-brown hover:text-brand-terracotta hover:border-brand-terracotta transition duration-500 whitespace-nowrap font-medium">
+                    <span class="text-current font-medium">聯絡我們</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>    <!-- Footer -->
     <footer class="pt-14 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 border-t border-current transition-colors">
         <div class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
 
@@ -550,7 +621,7 @@
             <div class="md:col-span-2 md:col-start-7 ani-this bottom-in delay-1">
                 <h4 class="font-sans uppercase tracking-[0.18em] text-xs md:text-sm text-brand-terracotta mb-5 md:mb-8 font-medium">Services</h4>
                 <ul class="font-sans space-y-3 md:space-y-4 text-base md:text-lg flex flex-col items-start">
-                    <li><a href="odm-perfume.html" class="inline-block hover:underline underline-offset-[8px] decoration-1 transition-colors duration-300">靈活代工 ODM</a></li>
+                    <li><a href="index.html#odm" class="inline-block hover:underline underline-offset-[8px] decoration-1 transition-colors duration-300">靈活代工 ODM</a></li>
                     <li><a href="workshops.html" class="inline-block hover:underline underline-offset-[8px] decoration-1 transition-colors duration-300">調香工藝 Workshops</a></li>
                     <li><a href="index.html#services" class="inline-block hover:underline underline-offset-[8px] decoration-1 transition-colors duration-300">香氣營銷 Marketing</a></li>
                 </ul>
