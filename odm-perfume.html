@@ -209,6 +209,24 @@
             color: #3B261D; 
             transition: padding 0.4s var(--ease), background-color 0.4s ease, color 0.4s ease;
         }
+        /* head-hidden */
+        #main-header { transition: transform 0s, padding 0.4s var(--ease), background-color 0.4s ease, color 0.4s ease; }
+        body.head-hidden #main-header { transform: translateY(-100%); }
+        body.head-hidden #odm-tabs { top: 0 !important; }
+        /* odm-tab-logo */
+        #odm-tabs .odm-tab-logo {
+            max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap;
+            border-right: 1px solid transparent;
+            transition: max-width 0.45s var(--ease), opacity 0.3s ease, margin 0.45s var(--ease), padding 0.45s var(--ease), border-color 0.45s var(--ease);
+        }
+        body.head-hidden #odm-tabs .odm-tab-logo {
+            max-width: 9rem !important; opacity: 1 !important;
+            margin-right: 1.75rem; padding-right: 1.75rem;
+            border-right-color: rgba(59,38,29,0.15);
+        }
+        @media (max-width: 767px) {
+            body.head-hidden #odm-tabs .odm-tab-logo { max-width: 6.5rem !important; margin-right: 1rem; padding-right: 1rem; }
+        }
         #main-header.is-scrolled {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
@@ -444,6 +462,10 @@
         .ani-this.in .conc-fill{transform:scaleX(var(--fill,0.5));}
         /* big italic display numeral */
         .big-num{font-family:'Baskervville',serif;font-style:italic;color:#A64B2A;line-height:0.7;}
+            /* odm-tabs-mobile-fix */
+        @media (max-width: 767px){
+            #odm-tabs{ top: 64px !important; background-color: #FDFBF9 !important; }
+        }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
@@ -451,7 +473,7 @@
     <!-- 導航欄 -->
     <nav id="main-header" class="fixed w-full z-[70] px-6 md:px-12 py-5 md:py-8 flex justify-between items-center border-b border-transparent">
         <a href="index.html" class="js-stagger-morph font-serif text-xl md:text-2xl tracking-widest uppercase relative z-[70]">Scent.M</a>
-        
+
         <div class="flex items-center gap-6 md:gap-10 relative z-[70]">
             <div class="hidden md:flex items-center gap-5 text-current opacity-70">
                 <a href="#" aria-label="Instagram" class="hover:text-brand-terracotta hover:opacity-100 transition-all duration-300 flex items-center justify-center w-5">
@@ -510,30 +532,47 @@
         </div>
     </div>
 
-    <nav id="odm-tabs" class="sticky top-0 z-40 bg-[#FDFBF9]/95 backdrop-blur border-y border-brand-brown/12">
+    <!-- ODM category nav (sticky, below fixed header) -->
+    <nav id="odm-tabs" aria-label="ODM categories" class="sticky top-[56px] md:top-[80px] z-40 bg-[#FDFBF9]/92 backdrop-blur-md border-b border-brand-brown/12">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-12">
-            <ul class="flex gap-7 md:gap-12 overflow-x-auto hide-scrollbar py-4 md:py-5 font-sans text-[11px] md:text-sm tracking-[0.18em] uppercase whitespace-nowrap">
-                <li><a href="odm-perfume.html" class="text-brand-brown hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">01</span>香水 Perfume</a></li>
-                <li><a href="odm-home.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">02</span>家居香氛 Home</a></li>
-                <li><a href="odm-personal.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">03</span>個人護理 Personal Care</a></li>
-                <li><a href="odm-pet.html" class="text-brand-brown/55 hover:text-brand-terracotta transition-colors duration-300"><span class="text-brand-terracotta mr-2">04</span>寵物護理 Pet Care</a></li>
-            </ul>
+            <div class="flex items-center gap-5 sm:gap-8 md:gap-12 overflow-x-auto hide-scrollbar py-4 md:py-6">
+                <a href="index.html" aria-label="Scent.M" class="odm-tab-logo shrink-0 font-serif text-lg md:text-xl tracking-widest uppercase text-brand-brown leading-none">Scent.M</a>
+                <a href="odm-perfume.html" aria-current="page" class="group relative shrink-0 inline-flex items-baseline gap-2 text-brand-brown">
+                    <span class="font-serif text-lg md:text-xl leading-none">香水</span>
+                    <span class="hidden sm:inline font-sans text-[10px] md:text-[11px] tracking-[0.24em] uppercase text-brand-terracotta">Perfume</span>
+                    <span aria-hidden="true" class="absolute -bottom-[14px] md:-bottom-[18px] left-0 h-px w-full bg-brand-terracotta"></span>
+                </a>
+                <a href="odm-home.html" class="group shrink-0 inline-flex items-baseline gap-2 text-brand-brown/40 hover:text-brand-brown transition-colors duration-300">
+                    <span class="font-serif text-lg md:text-xl leading-none">家居香氛</span>
+                    <span class="hidden sm:inline font-sans text-[10px] md:text-[11px] tracking-[0.24em] uppercase opacity-70">Home</span>
+                </a>
+                <a href="odm-personal.html" class="group shrink-0 inline-flex items-baseline gap-2 text-brand-brown/40 hover:text-brand-brown transition-colors duration-300">
+                    <span class="font-serif text-lg md:text-xl leading-none">個人護理</span>
+                    <span class="hidden sm:inline font-sans text-[10px] md:text-[11px] tracking-[0.24em] uppercase opacity-70">Personal Care</span>
+                </a>
+                <a href="odm-pet.html" class="group shrink-0 inline-flex items-baseline gap-2 text-brand-brown/40 hover:text-brand-brown transition-colors duration-300">
+                    <span class="font-serif text-lg md:text-xl leading-none">寵物護理</span>
+                    <span class="hidden sm:inline font-sans text-[10px] md:text-[11px] tracking-[0.24em] uppercase opacity-70">Pet Care</span>
+                </a>
+            </div>
         </div>
     </nav>
-    <!-- breadcrumb -->
+
+    <!-- ODM masthead: category index (top) + breadcrumb -->
     <header class="px-6 md:px-12 pt-28 md:pt-36 pb-4">
         <div class="max-w-screen-2xl mx-auto">
+            
             <nav aria-label="Breadcrumb" class="font-sans text-[11px] md:text-xs tracking-[0.28em] uppercase opacity-55 hero-fade-up opacity-0 translate-y-4">
                 <a href="index.html" class="hover:text-brand-terracotta transition-colors duration-300">← 返回首頁</a>
             </nav>
         </div>
     </header>
 
-    <section class="relative px-6 md:px-12 pt-8 md:pt-16 pb-12 md:pb-20 overflow-hidden">
+<section class="relative px-6 md:px-12 pt-8 md:pt-16 pb-12 md:pb-20 overflow-hidden">
         <div class="max-w-screen-2xl mx-auto">
             <div class="grid grid-cols-12 gap-x-4 md:gap-x-6 items-end">
-                <span class="col-span-3 md:col-span-2 big-num text-[5rem] md:text-[9rem] lg:text-[11rem] self-start hero-fade-up opacity-0 translate-y-4" aria-hidden="true">01</span>
-                <div class="col-span-9 md:col-span-7 md:col-start-3 relative z-10">
+                <span class="col-span-12 md:col-span-2 big-num text-[4rem] md:text-[9rem] lg:text-[11rem] leading-[0.8] self-start hero-fade-up opacity-0 translate-y-4 mb-5 md:mb-0" aria-hidden="true">01</span>
+                <div class="col-span-12 md:col-span-7 md:col-start-3 relative z-10">
                     <span class="block font-sans text-[11px] md:text-xs tracking-[0.32em] uppercase text-brand-terracotta mb-6 md:mb-10 hero-fade-up opacity-0 translate-y-4">Boutique ODM · Service File</span>
                     <h1 class="fluid-display font-serif text-[3.25rem] sm:text-6xl md:text-7xl lg:text-[7.5rem] leading-[0.92] tracking-tight text-brand-brown hero-text opacity-0 translate-y-8">
                         Perfume<br><span class="italic text-brand-terracotta font-light">&amp; Fragrance</span>.
@@ -797,10 +836,8 @@
         setupPureCSSMorph();
 
         const heroTl = gsap.timeline();
-        heroTl.to('#hero-mask', { scaleY: 0, duration: 1.5, ease: 'expo.inOut' })
-              .to('.hero-img', { scale: 1, duration: 2, ease: 'expo.out' }, "-=1.5")
-              .to('.hero-text', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, "-=1.0")
-              .to('.hero-fade-up', { opacity: 1, y: 0, duration: 1.0, stagger: 0.2, ease: 'power2.out' }, "-=0.8");
+        heroTl.to('.hero-fade-up', { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power2.out' })
+              .to('.hero-text', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, "-=0.55");
 
         const header = document.querySelector('#main-header');
         const menuToggle = document.getElementById('menu-toggle');
@@ -859,13 +896,34 @@
             });
         }
 
+        let __lastY = 0;
         lenis.on('scroll', (e) => {
-            if (window.scrollY > 50) {
-                header.classList.add('is-scrolled');
-            } else {
-                header.classList.remove('is-scrolled');
+            const y = window.scrollY;
+            if (y > 50) header.classList.add('is-scrolled');
+            else header.classList.remove('is-scrolled');
+            // hide-on-scroll-down (only after passing header height); keep visible near top & when menu open
+            if (!document.body.classList.contains('menu-open')) {
+                if (y > 180 && y > __lastY + 4 && window.innerWidth >= 768) {
+                    document.body.classList.add('head-hidden');
+                } else if (y < __lastY - 4 || y < 120) {
+                    document.body.classList.remove('head-hidden');
+                }
             }
+            __lastY = y;
         });
+        /* native head-hidden fallback */
+        (function(){
+            let ny = window.scrollY;
+            window.addEventListener('scroll', function(){
+                const y = window.scrollY;
+                if (window.scrollY > 50) header.classList.add('is-scrolled'); else header.classList.remove('is-scrolled');
+                if (!document.body.classList.contains('menu-open')) {
+                    if (y > 180 && y > ny + 4 && window.innerWidth >= 768) document.body.classList.add('head-hidden');
+                    else if (y < ny - 4 || y < 120) document.body.classList.remove('head-hidden');
+                }
+                ny = y;
+            }, { passive: true });
+        })();
 
         function setupAniThis() {
             gsap.utils.toArray('.ani-this').forEach(item => {
