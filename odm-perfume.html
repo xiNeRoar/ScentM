@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#FDFBF9">
-    <title>Perfume · Boutique ODM · Scent.M</title>
+    <title>香水 ODM 代工 | Scent.M</title>
+    <meta name="description" content="由單體香料與自然香料展開的香水調香設計，涵蓋 EDC、EDT、EDP、Parfum 及無酒精香水、滾珠棒、香水膏等彈性代工方案。">
+    <link rel="canonical" href="https://www.scentm.hk/odm-perfume.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Scent.M">
+    <meta property="og:title" content="香水 ODM 代工 | Scent.M">
+    <meta property="og:description" content="由單體香料與自然香料展開的香水調香設計，涵蓋 EDC、EDT、EDP、Parfum 及無酒精香水、滾珠棒、香水膏等彈性代工方案。">
+    <meta property="og:url" content="https://www.scentm.hk/odm-perfume.html">
+    <meta property="og:image" content="https://www.scentm.hk/hero.jpg">
+    <meta property="og:locale" content="zh_HK">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="香水 ODM 代工 | Scent.M">
+    <meta name="twitter:description" content="由單體香料與自然香料展開的香水調香設計，涵蓋 EDC、EDT、EDP、Parfum 及無酒精香水、滾珠棒、香水膏等彈性代工方案。">
+    <meta name="twitter:image" content="https://www.scentm.hk/hero.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +58,12 @@
     </script>
 
     <style>
+        /* ODM soft-nav fade */
+        #odm-swap{animation:odmSwapIn .55s cubic-bezier(0.25,1,0.35,1);}
+        @keyframes odmSwapIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+        @media (prefers-reduced-motion: reduce){#odm-swap{animation:none;}}
+
+
         /* ───── 全局設定 ───── */
         :root {
             --ease: cubic-bezier(0.25, 1, 0.35, 1);
@@ -179,9 +198,6 @@
                 background: #A64B2A;
                 width: 28px;
             }
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
         }
 
         .hero-img { transform: scale(1.15); }
@@ -274,24 +290,6 @@
         }
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
-        }
-
-        /* ───── Section logo accent (no text) ───── */
-        .section-tag {
-            display: inline-block;
-            color: #A64B2A;
-            line-height: 1;
-        }
-        .section-tag .logo-inline {
-            display: inline-block;
-            width: 56px;
-            aspect-ratio: 379 / 107;
-            background-color: currentColor;
-            -webkit-mask: url('logo-ornament.png') no-repeat center / contain;
-                    mask: url('logo-ornament.png') no-repeat center / contain;
-        }
-        @media (min-width: 768px) {
-            .section-tag .logo-inline { width: 68px; }
         }
 
         /* ───── Hibi Lab wordmark (inherits currentColor for scroll theme swap) ───── */
@@ -467,6 +465,9 @@
             #odm-tabs{ top: 64px !important; background-color: #FDFBF9 !important; }
         }
     </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Service","serviceType":"香水 ODM 代工","provider":{"@type":"Organization","name":"Scent.M","url":"https://www.scentm.hk"},"areaServed":"HK","description":"EDC、EDT、EDP、Parfum 及無酒精香水、滾珠棒、香水膏等彈性香水代工。"}
+    </script>
 </head>
 <body class="font-sans antialiased selection:bg-brand-terracotta selection:text-white">
 
@@ -558,6 +559,7 @@
         </div>
     </nav>
 
+    <div id="odm-swap">
     <!-- ODM masthead: category index (top) + breadcrumb -->
     <header class="px-6 md:px-12 pt-28 md:pt-36 pb-4">
         <div class="max-w-screen-2xl mx-auto">
@@ -703,6 +705,8 @@
             });
         })();
     </script>
+
+    </div><!-- /odm-swap -->
 
     <!-- Footer -->
     <footer class="pt-14 md:pt-24 pb-8 md:pb-12 px-6 md:px-12 border-t border-current transition-colors">
@@ -1152,5 +1156,64 @@
             update();
         })();
     </script>
+
+    <script>
+    /* ODM soft-navigation: real pages (SEO) + AJAX partial swap (no reload flash) */
+    (function(){
+      if(window.__odmSwap) return; window.__odmSwap=true;
+      const SWAP='odm-swap';
+      const isOdm=u=>/(^|\/)odm-(perfume|home|personal|pet)\.html(\?|#|$)/.test(u||'');
+      function syncTabs(doc){
+        const live=document.getElementById('odm-tabs'); const fresh=doc.getElementById('odm-tabs');
+        if(live&&fresh&&live!==fresh.parentNode){ live.innerHTML=fresh.innerHTML; }
+      }
+      function revealNative(scope){
+        scope.querySelectorAll('.ani-this').forEach(el=>el.classList.add('in'));
+        scope.querySelectorAll('.hero-fade-up,.hero-text').forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+      }
+      function reExec(scope){
+        scope.querySelectorAll('script').forEach(old=>{
+          const s=document.createElement('script');
+          for(const a of old.attributes) s.setAttribute(a.name,a.value);
+          s.textContent=old.textContent; old.replaceWith(s);
+        });
+      }
+      async function go(url,push){
+        const cur=document.getElementById(SWAP); if(!cur){location.href=url;return;}
+        try{
+          const res=await fetch(url,{headers:{'X-Requested-With':'odm-swap'}});
+          const html=await res.text();
+          const doc=new DOMParser().parseFromString(html,'text/html');
+          const fresh=doc.getElementById(SWAP);
+          if(!fresh){location.href=url;return;}
+          const node=document.importNode(fresh,true);
+          cur.replaceWith(node);
+          if(push) history.pushState({odm:1},'',url);
+          if(doc.title) document.title=doc.title;
+          window.scrollTo({top:0,left:0,behavior:'auto'});
+          syncTabs(doc); revealNative(node); reExec(node); bind();
+        }catch(e){ location.href=url; }
+      }
+      function bind(){
+        document.querySelectorAll('#odm-tabs a[href]').forEach(a=>{
+          if(a.__odmBound) return;
+          const u=a.getAttribute('href'); if(!isOdm(u)) return;
+          a.__odmBound=true;
+          a.addEventListener('click',e=>{
+            if(e.metaKey||e.ctrlKey||e.shiftKey||e.button) return;
+            e.preventDefault();
+            if((location.pathname.split('/').pop()||'')===u) return;
+            go(u,true);
+          });
+        });
+      }
+      window.addEventListener('popstate',()=>{
+        const u=location.pathname.split('/').pop()||'odm-perfume.html';
+        if(isOdm(u)) go(u,false);
+      });
+      bind();
+    })();
+    </script>
+
 </body>
 </html>

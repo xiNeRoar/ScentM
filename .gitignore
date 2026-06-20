@@ -1,0 +1,8 @@
+# OS / editor / thumbnail junk
+.thumbnail
+Thumbs.db
+ehthumbs.db
+.DS_Store
+desktop.ini
+*~
+*.tmp

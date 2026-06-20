@@ -20,6 +20,9 @@ serif: Baskervville + Cactus Classical Serif · sans: Montserrat + Noto Sans TC 
 
 ## Absolute obedience
 - Execute the user's instructions EXACTLY as stated. No substitutions, no shortcuts, no "better" alternatives unless asked.
+- Take instructions LITERALLY. Do EXACTLY what is asked — nothing more, nothing less. Never act on your own initiative / 自作主張.
+- "Show me a demo" / "睇下" NEVER means apply to live. Demos stay in separate demo files. Only touch live files when explicitly told to apply.
+- "Revert" means restore the prior state and STOP — do not apply anything new.
 - When told to check line-by-line, dump EVERY relevant line (not headings only, not sampling, not memory). Verify before acting.
 
 ## Hard rules
